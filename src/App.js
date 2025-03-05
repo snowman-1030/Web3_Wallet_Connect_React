@@ -15,6 +15,7 @@ const networks = [arbitrum, mainnet]
 const metadata = {
   name: 'My Website',
   description: 'My Website description',
+  // url: 'http://localhost:3000/', // origin must match your domain & subdomain
   url: 'https://web3-wallet-connect-react.vercel.app/', // origin must match your domain & subdomain
   icons: ['https://img.icons8.com/?size=100&id=43967&format=png&color=000000']
 }
@@ -33,12 +34,12 @@ createAppKit({
 const App = () => {
 
   const { open } = useAppKit()
+  const { address, isConnected, caipAddress, status, embeddedWalletInfo } = useAppKitAccount()
 
   return (
     <div className="App">
       <div style={{marginTop:"150px"}}>
-        <button onClick={() => open()}>Open Connect Modal</button>
-        {/* <button onClick={() => open({ view: 'Networks' })}>Open Network Modal</button> */}
+        <button onClick={() => open('Connect')}>{isConnected ? "Show wallet":"Connect"}</button>
       </div>
     </div>
   )
